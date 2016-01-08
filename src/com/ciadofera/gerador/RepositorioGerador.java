@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -27,16 +28,15 @@ public void gerar(String nome,String cpf, Date data, int quantidade,String valor
 	
 	
 	JFileChooser win = new JFileChooser();
-	int returValor = win.showOpenDialog(null);
+	int returValor = win.showSaveDialog(null);
 
 	if (returValor == JFileChooser.APPROVE_OPTION) {
-		XWPFDocument document = new XWPFDocument(new FileInputStream(win.getSelectedFile()));
+		XWPFDocument document = new XWPFDocument();
 
 	XWPFWordExtractor pegar = new XWPFWordExtractor(document);
 	
 	
-	XWPFParagraph paragraph = document.createParagraph();
-	XWPFRun run = paragraph.createRun();
+	
 	for (int i = 0; i < quantidade; i++) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(data);
@@ -51,42 +51,44 @@ public void gerar(String nome,String cpf, Date data, int quantidade,String valor
 		
 		String valorEstenso = NumerosEscrito.getExtenso(valor); 
 		
+		XWPFParagraph paragraph = document.createParagraph();
+		XWPFRun run = paragraph.createRun();
 		
 		
+		run.setText("|CIA do Fera|");
+		run.addBreak();
+		run.setText("Nota Promissória");
+		run.setFontSize(20);
+		paragraph.setAlignment(ParagraphAlignment.CENTER);
+		XWPFParagraph paragraph1 = document.createParagraph();
+		XWPFRun run1 = paragraph1.createRun();
 		
-		run.setText("********************************** |CIA do Fera| *******************************");
-		run.addBreak();
-		run.setText(" ********************************* Nota Promissória *****************************");
-		run.addBreak();
-		run.addBreak();
-		run.setText("_____________________________________________________________________________");
-		run.addBreak();
-		run.setText("Nª "+(i+1)+"/"+quantidade+"          -           Vencimento :"+dataCorrente+"          -           Valor R$ ("+valor+",00).");
-		run.addBreak();
-		run.addBreak();
-		run.setText("	Aos dias "+dia+" do mês de "+mes+" do ano de "+ano+", pagaremos por esta única via de NOTA PROMISSORIA  a CIA do Fera , CNPJ 16860387/0001-96  ou a sua ordem, a quantia de R$ "+valor+",00 ( "+valorEstenso+" reais ) em moeda corrente do pais.");
-		run.addBreak();
-		run.setText("Pagável em Caruaru - PERNAMBUCO.");
-		run.addBreak();
-		run.addBreak();
-		run.setText("                                                                                                            Caruaru ,"+dia+" de "+mes+" de "+ano+" .");
-		run.addBreak();
-		run.addBreak();
-		run.addBreak();
-		run.setText("          EMITENTE(S): ________________________________________________ ");
-		run.addBreak();
-		run.setText("                                        "+nome+" / CPF : "+cpf);
-		run.addBreak();
-		run.setText("                                        "+endereco+".");
-		run.addBreak();
-		run.addBreak();
-		run.setText("------------------------------------------------------------------------------------------------------------------------------");
-		run.addBreak();
-		run.addBreak();
-		run.addBreak();
-		run.addBreak();
-		run.addBreak();
-		run.setText("------------------------------------------------------------------------------------------------------------------------------");
+		run1.addBreak();
+		run1.addBreak();
+		run1.setText("_____________________________________________________________________________");
+		run1.addBreak();
+		run1.setText("Nª "+(i+1)+"/"+quantidade+"          -           Vencimento :"+dataCorrente+"          -           Valor R$ ("+valor+",00).");
+		run1.addBreak();
+		run1.addBreak();
+		run1.setText("	Aos dias "+dia+" do mês de "+mes+" do ano de "+ano+", pagaremos por esta única via de NOTA PROMISSORIA  a CIA do Fera , CNPJ 16860387/0001-96  ou a sua ordem, a quantia de R$ "+valor+",00 ( "+valorEstenso+" reais ) em moeda corrente do pais.");
+		run1.addBreak();
+		run1.setText("Pagável em Caruaru - PERNAMBUCO.");
+		run1.addBreak();
+		run1.addBreak();
+		run1.setText("                                                                                                            Caruaru ,"+dia+" de "+mes+" de "+ano+" .");
+		run1.addBreak();
+		run1.addBreak();
+		run1.addBreak();
+		run1.setText("          EMITENTE(S): ________________________________________________ ");
+		run1.addBreak();
+		run1.setText("                                        "+nome+" / CPF : "+cpf);
+		run1.addBreak();
+		run1.setText("                                        "+endereco+".");
+		run1.addBreak();
+		run1.addBreak();
+		run1.setText("------------------------------------------------------------------------------------------------------------------------------");
+		run1.addBreak();
+		run1.setText("------------------------------------------------------------------------------------------------------------------------------");
 	}
 
 
