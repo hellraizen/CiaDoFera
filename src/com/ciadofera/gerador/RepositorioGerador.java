@@ -55,7 +55,7 @@ public void gerar(String nome,String cpf, Date data, int quantidade,String valor
 		XWPFRun run = paragraph.createRun();
 		
 		
-		run.setText("|Cia do FERA|");
+		run.setText("Cia do FERA");
 		run.setFontSize(20);
 		run.setBold(true);
 		paragraph.setAlignment(ParagraphAlignment.CENTER);
