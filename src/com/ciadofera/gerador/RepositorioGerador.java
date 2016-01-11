@@ -55,40 +55,51 @@ public void gerar(String nome,String cpf, Date data, int quantidade,String valor
 		XWPFRun run = paragraph.createRun();
 		
 		
-		run.setText("|CIA do Fera|");
-		run.addBreak();
-		run.setText("Nota Promissória");
+		run.setText("|Cia do FERA|");
 		run.setFontSize(20);
+		run.setBold(true);
 		paragraph.setAlignment(ParagraphAlignment.CENTER);
+		XWPFParagraph paragraph2 = document.createParagraph();
+		XWPFRun run2 = paragraph2.createRun();
+		run2.setText("Nota Promissória");
+		run2.setFontSize(20);
+		run2.setBold(true);
+		run2.setFontFamily("Impact");
+		paragraph2.setAlignment(ParagraphAlignment.CENTER);
+		
+		
 		XWPFParagraph paragraph1 = document.createParagraph();
 		XWPFRun run1 = paragraph1.createRun();
-		
-		run1.addBreak();
 		run1.addBreak();
 		run1.setText("_____________________________________________________________________________");
 		run1.addBreak();
 		run1.setText("Nª "+(i+1)+"/"+quantidade+"          -           Vencimento :"+dataCorrente+"          -           Valor R$ ("+valor+",00).");
-		run1.addBreak();
-		run1.addBreak();
-		run1.setText("	Aos dias "+dia+" do mês de "+mes+" do ano de "+ano+", pagaremos por esta única via de NOTA PROMISSORIA  a CIA do Fera , CNPJ 16860387/0001-96  ou a sua ordem, a quantia de R$ "+valor+",00 ( "+valorEstenso+" reais ) em moeda corrente do pais.");
-		run1.addBreak();
-		run1.setText("Pagável em Caruaru - PERNAMBUCO.");
-		run1.addBreak();
-		run1.addBreak();
-		run1.setText("                                                                                                            Caruaru ,"+dia+" de "+mes+" de "+ano+" .");
-		run1.addBreak();
-		run1.addBreak();
-		run1.addBreak();
-		run1.setText("          EMITENTE(S): ________________________________________________ ");
-		run1.addBreak();
-		run1.setText("                                        "+nome+" / CPF : "+cpf);
-		run1.addBreak();
-		run1.setText("                                        "+endereco+".");
-		run1.addBreak();
-		run1.addBreak();
-		run1.setText("------------------------------------------------------------------------------------------------------------------------------");
-		run1.addBreak();
-		run1.setText("------------------------------------------------------------------------------------------------------------------------------");
+		run1.setBold(true);
+		paragraph1.setAlignment(ParagraphAlignment.CENTER);
+		XWPFParagraph paragraph3 = document.createParagraph();
+		XWPFRun run3 = paragraph3.createRun();
+		run3.addBreak();
+		run3.setText("	Aos dias "+dia+" do mês de "+mes+" do ano de "+ano+", pagaremos por esta única via de NOTA PROMISSORIA a");
+		run3.setText(" FABRICIA KISLLEY BARROS MENDES - ME, CNPJ 16860387/0001-96");
+		run3.setText(" ou a sua ordem, a quantia de R$ "+valor+",00 ("+valorEstenso+" reais) em moeda corrente do pais.");
+		run3.addBreak();
+		run3.setText("Pagável em Caruaru - PERNAMBUCO.");
+		run3.addBreak();
+		run3.addBreak();
+		run3.setText("                                                                                                            Caruaru ,"+dia+" de "+mes+" de "+ano+".");
+		run3.addBreak();
+		run3.addBreak();
+		run3.addBreak();
+		run3.setText("          EMITENTE: ________________________________________________ ");
+		run3.addBreak();
+		run3.setText("                                        "+nome+" / CPF: "+cpf);
+		run3.addBreak();
+		run3.setText("                                        "+endereco+".");
+		run3.addBreak();
+		run3.addBreak();
+		run3.addBreak();
+		run3.setText("------------------------------------------------------------------------------------------------------------------------------");
+		
 	}
 
 
